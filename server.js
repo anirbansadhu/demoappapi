@@ -1,8 +1,9 @@
 import express from 'express';
 import userRoutes from './userRoutes.js';
 import connectDB from './db.js';
-
+import cors from 'cors'
 const app = express();
+app.use(cors());
 
 const requestLogger = (req, res, next) => {
     console.log(`Request received at: ${new Date().toISOString()}`);
