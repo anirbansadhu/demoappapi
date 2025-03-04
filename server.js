@@ -24,7 +24,29 @@ let users = [
 
 // Mount user routes
 app.use('/user', userRoutes);
+app.get('/db-status', (req, res) => {
+  const status = mongoose.connection.readyState; // Get MongoDB connection state
 
+  let statusMessage = '';
+  switch (status) {
+      case 0:
+          statusMessage = 'Disconnected';
+          break;
+      case 1:
+          statusMessage = 'Connected';
+          break;
+      case 2:
+          statusMessage = 'Connecting';
+          break;
+      case 3:
+          statusMessage = 'Disconnecting';
+          break;
+      default:
+          statusMessage = 'Unknown state';
+  }
+
+  res.json({ status: statusMessage });
+});
 // Fix: Define `createUser` route correctly
 app.post('/createUser', (req, res) => {
     const { name, email } = req.body;
