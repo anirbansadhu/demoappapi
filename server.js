@@ -42,7 +42,15 @@ app.post('/createUser', (req, res) => {
     users.push(newUser);
     res.status(201).json(newUser);
 });
+app.get('/', (req, res) => {
+  const { name, email } = req.body;
 
+ 
+
+
+
+  res.json({"message":'i am healthy'});
+});
 // Error-handling middleware (should be last)
 app.use((err, req, res, next) => {
     console.error(err.stack);
