@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import userRoutes from './userRoutes.js';
 import connectDB from './db.js';
+import mongoose from 'mongoose';
 
 const app = express();
 app.use(cors());
