@@ -11,7 +11,7 @@ const requestLogger = (req, res, next) => {
   };
 connectDB()
 
-//app.use(requestLogger)
+app.use(requestLogger)
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use('/user', userRoutes);  // Now the route becomes `/api/users`, `/api/createUser`
@@ -31,23 +31,23 @@ app.use('/user', userRoutes);  // Now the route becomes `/api/users`, `/api/crea
 // });
 
 // // POST route to create a new user
-// app.post('/createUser', (req, res) => {
-//   const { name, email } = req.body;
+app.post('/createUser', (req, res) => {
+  const { name, email } = req.body;
 
-//   if (!name || !email) {
-//     return res.status(400).json({ error: 'Name and email are required' });
-//   }
+  if (!name || !email) {
+    return res.status(400).json({ error: 'Name and email are required' });
+  }
 
-//   const newUser = {
-//     id: users.length + 1, // Generate a new user ID
-//     name,
-//     email,
-//   };
+  const newUser = {
+    id: users.length + 1, // Generate a new user ID
+    name,
+    email,
+  };
 
-//   users.push(newUser); // Add the new user to the array
+  users.push(newUser); // Add the new user to the array
 
-//   res.status(201).json(newUser); // Respond with the created user
-// });
+  res.status(201).json(newUser); // Respond with the created user
+});
 
 
 // Error-handling middleware (needs to be after all routes)

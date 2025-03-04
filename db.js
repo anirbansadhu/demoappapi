@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const mongoURI = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.3';  // Replace with your MongoDB URI
+const mongoURI = "mongodb+srv://anisadhu:klShQrQmRflyxn7Q@cluster0.edr5b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";  // Replace with your MongoDB URI
 const connectDB = async () => {
   try {
     await mongoose.connect(mongoURI, {
